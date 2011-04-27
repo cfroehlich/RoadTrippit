@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+
+
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Map</title>
+
+<!-- Load style sheets -->
+<!-- <link rel="stylesheet" type="text/css" href="mainLayout.css" /> -->
+
+
+<!-- Load any supplemental Javascript libraries here -->
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAMcCZfidjPDDpOxKsR8kQDRRO4KAP3Jdj-RIgScftUzhxFx9FFRRdndpOFLs0DnqeqqT5UNpC3xO8xg"
+            type="text/javascript"></script>
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+<script type="text/javascript"> 
+	var directions;
+    function initialize() {
+		new Accordian('basic-accordian',5,'header_highlight');
+	
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map_canvas"));
+        map.setCenter(new GLatLng(42.356006,-71.09228), 15);
+        map.setUIToDefault();
+		
+		var start = new GMarker(new GLatLng(42.356006,-71.097228));
+		var finish = new GMarker(new GLatLng(42.360183,-71.086613));
+		map.addOverlay(start);
+		map.addOverlay(finish);
+		var route = new GPolyline([new GLatLng(42.356006,-71.097228),new GLatLng(42.360183,-71.086613)],"#ff0000", 10);
+		map.addOverlay(route);
+		
+		var content = "INFO";
+		
+		GEvent.addListener(start, "click", function() {
+			start.openInfoWindowHtml("<b>410 Memorial Drive </b>  <br>4/10/2011-4/12/2011 <br>Host: pending");
+		});
+		
+		GEvent.addListener(finish, "click", function() {
+			finish.openInfoWindowHtml("<b> 70 Amherst Street </b>  <br> 4/12/2011-4/13/2011 <br>Host: pending");
+		});
+		
+		
+      }
+    }
+	
+	function revealModal(divID)
+	{
+		window.onscroll = function () { document.getElementById(divID).style.top = document.body.scrollTop; };
+		document.getElementById(divID).style.display = "block";
+		document.getElementById(divID).style.top = document.body.scrollTop;
+	}
+
+	function hideModal(divID)
+	{
+		document.getElementById(divID).style.display = "none";
+	}
+	var k = 0;
+	var z = 0;
+	function confirm(name)
+	{
+		
+		if (name=="kayla")
+		{
+			if (k%2 == 0 )
+			{
+				k = k+1;
+				document.getElementById('conf_text1').innerHTML = "unconfirm";
+				document.getElementById('conf').src="check.jpg";
+			}
+			else
+			{
+				k = k+1;
+				document.getElementById('conf_text1').innerHTML = "confirm";
+				document.getElementById('conf').src="x.jpg";
+			}
+			
+		}
+		else
+		{
+			if (k%2 == 0 )
+			{
+				k = k+1;
+				document.getElementById('con').src="check.jpg";
+				document.getElementById('conf_text2').innerHTML = "unconfirm";
+			}
+			else
+			{
+				k = k+1;
+				document.getElementById('conf_text2').innerHTML = "confirm";
+				document.getElementById('con').src="x.jpg";
+			}
+		
+		}
+		
+		
+	}
+	
+	
+	
+</script>
+
+
+<style type="text/css">
+
+
+
+#title {
+position: fixed;
+font-family: fantasy, sans-serif, serif, monospace;
+font-size: 35px;
+color: white;
+top: 17px;
+left: 47%;
+z-index: 0;
+}
+
+#logout {
+margin-top:10px;
+text-align:center;
+position: absolute;
+top: 10px;
+right: 25px;
+z-index: 0;
+width:100px;
+height:20px
+}
+
+#home {
+margin-top:10px;
+text-align:center;
+position: absolute;
+top: 10px;
+left: 25px;
+z-index: 0;
+width:100px;
+height:20px
+}
+
+#tab_background {
+position: absolute;
+top: 68px;
+left: 8px;
+z-index: 0;
+}
+
+#tabs{
+position: absolute;
+left: 0px;
+top: 100px;
+z-index: 1;
+font-family: Arial;
+font-size: 20px;
+}
+
+#map_canvas{
+position: absolute;
+left: 200px;
+top: 80px;
+height: 80%;
+width: 57%;
+z-index: 1;
+}
+
+#basic-accordian{
+	border:5px solid #EEE;
+	padding:5px;
+	width:310px;
+	position:absolute;
+	left:87%;
+	top:180px;
+	margin-left:-175px;
+	z-index:0;
+	margin-top:-100px;
+}
+ 
+.accordion_headings{
+	padding:5px;
+	background:#BBBBBB;
+	color:#FFFFFF;
+	border:1px solid #FFF;
+	cursor:pointer;
+	
+}
+ 
+.accordion_headings:hover{
+	background:#003366;
+}
+ 
+.accordion_child{
+	padding:15px;
+	background:#EEE;
+	font-family: Arial;
+}
+ 
+.header_highlight{
+	background:#003366;
+}
+
+#modalPage
+{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px; left: 0px;
+}
+.modalBackground
+{
+    filter: Alpha(Opacity=40); -moz-opacity:0.4; opacity: 0.4;
+    width: 100%; height: 100%; background-color: #999999;
+    position: absolute;
+    z-index: 500;
+    top: 0px; left: 0px;
+}
+.modalContainer
+{
+    position: absolute;
+    width: 400px;
+    left: 16%;
+    top: 50%;
+    z-index: 750;
+}
+.modal
+{
+    background-color: white;
+    border: solid 1px grey; position: fixed;
+    top: 80px;
+    left: 16%px;
+    z-index: 1000;
+    width: 800px;
+    height: 70%;
+    padding: 0px;
+}
+.modalTop
+{
+    width: 99%;
+    background-color: #003366;
+    padding: 4px;
+    color: #ffffff;
+    text-align: center;
+	font-family: Arial;
+}
+.modalTop a, .modalTop a:visited
+{
+    color: #ffffff;
+}
+.modalBody
+{
+    padding: 10px;
+}
+
+
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	var b_canvas = document.getElementById("tab_orange");
+	var b_context = b_canvas.getContext("2d");
+	b_context.fillStyle = "rgba(220,220,220,.6)";
+	
+	b_context.fillRect(0, 0, 180, 600);
+	b_context.fillStyle = "rgba(0,51,102,.9)";
+	b_context.fillRect(0, 47, 180, 40);
+});
+</script>
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/sunny/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+
+		$("#submit").button();
+		$("#l").button();
+		$("#d").button();
+	});
+</script>
+<script type="text/javascript" src="accordian.pack.js"></script> 
+</head>
+
+<body onload="initialize()" onunload="GUnload()" >
+
+<div id="modalPage">
+    <div class="modalBackground" onclick="hideModal('modalPage')">
+    </div>
+    <div class="modalContainer">
+        <div class="modal">
+            <div class="modalTop">Edit Itinerary</div>
+            <div class="modalBody">
+                                <div id="plannitBox">
+                        
+                        <form action="#" method="post" id="plannitForm">
+                        <p>
+                        <label class="plannit">Trip Name</label>
+                        <input type="text" name="tripName" id="tripName" title="Name Me" value="Cam's Trip to Senior House"/>
+                        </p>
+                        
+                        <table>
+                        <tr>
+                        <td><label class="plannit">From</label></td>
+                        <td><input type="text" name="from" id="from" title="Starting Location" value="410 Memorial Drive Cambridge, MA" /></td>
+                        
+                        <td><label class="plannit">To</label></td>
+                        <td><input type="text" name="to" id="to" title="Ending Location" value="70 Amherst Street Cambridge, MA" /></td>
+                        </tr>
+                        
+                        <tr><td><br /></td></tr>
+                        
+                        <tr>
+                        <td><label class="plannit">Depart</label></td>
+                        <td><input type="text" name="depart" id="depart" title="Departing Date" value="4/10/2011" /></td>
+
+                        <td><label class="plannit">Return</label></td>
+                        <td><input type="text" name="return" id="return" title="Returning Date" value="4/13/2011" /></td>
+                        </tr>
+                        </table>
+			<div id="interStop" style="text-align:center">
+				<button type="button" id=interStopAdd>Add an Intermediate Location</button>
+			</div>
+                        <br />
+                        <hr style="color:yellow; border-bottom-style:dashed;" />
+                        <br />
+                        <div id=submitDiv>
+        <!--MAKE SURE TO EDIT THIS FOR PROTOTYPE TO A LINK!!!! -->
+                        <button type="button" id="submit"onclick="hideModal('modalPage')">OK</button>
+			<button type="button" id="cancel" onclick="hideModal('modalPage')">Cancel</button>
+                        </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div   id='title_pic'  align = "center" style=" top: 0px ">
+	<img width = "100%" height = "60px" src = "blue.jpg" alt = "title"    />
+</div>
+
+<div  id='tab_background'  >
+	<canvas id="tab_orange" height = "400px"  ></canvas>
+</div>
+
+<div id = "tabs" >
+
+<table cellspacing = "20">
+<tr>
+<td> <img height = "25px" width = "25px" src = "map.jpg" alt = "map icon"  /> </td> <td >  <a style = "color: white"> Map </a> </td>
+</tr>
+<tr>
+<td> <img height = "25px" width = "25px" src = "chat.jpg" alt = "messaging icon"  /> </td> <td><a href = "messaging.html" style = "color: black">Messaging</a> </td>
+</tr>
+<tr>
+<td> <img height = "25px" width = "25px" src = "directions.jpg" alt = "directions icon"  /></td> <td><a href = "directions.html" style = "color: black"> Directions</a> </td>
+</tr>
+<tr>
+<td> <img height = "25px" width = "25px" src = "check.jpg" alt = "finish icon"  /> </td> <td><a href = "http://web.mit.edu/tribbett/www/RoadTrippit/dash.html" style = "color: black">Finish</a> </td>
+</tr>
+</table>
+
+</div>
+
+<div id = "title"  >
+Mappit
+</div>
+
+<div id = "logout" style="background-color:#FBB917">
+<a style="text-decoration:none" href = "http://web.mit.edu/tribbett/www/RoadTrippit/index.html">Logout</a>
+</div>
+
+<div id = "home" style="background-color:#FBB917">
+<a style="text-decoration:none; color:#000000" href = "http://web.mit.edu/tribbett/www/RoadTrippit/dash.html">Dashboard</a>
+</div>
+
+<div id="map_canvas" style = " border: 1px solid black;" ></div>
+
+<div id="basic-accordian" ><!--Parent of the Accordion--> 
+ 
+<div align="right"></div> 
+ 
+<!--Start of each accordion item--> 
+  <div id="test-header" class="accordion_headings header_highlight" > <b >410 Memorial Drive </b> <br> 4/10/2011 - 4/12/2011</div><!--Heading of the accordion ( clicked to show n hide ) --> 
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content--> 
+  
+  <div id="test-content"><!--DIV which show/hide on click of header--> 
+  
+  	<!--This DIV is for inline styling like padding...--> 
+    <div class="accordion_child"> 
+    	<table  cellspacing = "10">
+		<tr  >
+			<td> <img src = "daniel.jpg" height = "40px" width = "40px"> </td> 
+			<td> <b style = "font-size: 15px">Daniel Rios </b> <br> 
+			<span style = "font-size: 12px ">Status: <span > pending </span> </span><br> <a href = "messaging.html" style = "font-size: 10px  "> Send a request </a> </td> 
+			<td style = "padding-left: 40px"><a href = "#"> 
+			<img src = "x.jpg" height = "10px" width = "10px"  > </a></td> 
+		</tr>
+		
+		<tr  >
+			<td> <img src = "kayla.jpg" height = "40px" width = "40px"> </td> 
+			<td> <b style = "font-size: 15px">Kayla Barrientos  </b> <br> 
+			<span style = "font-size: 12px ">Status: <span > accepted </span> </span><br> <a id = "click1" onclick = "confirm('kayla')"href = "#" style = "font-size: 10px  "> <div id = "conf_text1">Confirm</div> </a> </td> 
+			<td style = "padding-left: 40px"><a href = "#"> 
+			<img id = "conf" src = "x.jpg" height = "10px" width = "10px"  > </a></td> 
+		</tr>
+		</table>
+		
+    </div> 
+    
+  </div> 
+<!--End of each accordion item--> 
+ 
+ 
+<!--Start of each accordion item--> 
+  <div id="test1-header" class="accordion_headings" ><b>70 Amherst Street</b> <br>4/12/2011-4/13/2011 </div><!--Heading of the accordion ( clicked to show n hide ) --> 
+  
+  <!--Prefix of heading (the DIV above this) and content (the DIV below this) to be same... eg. foo-header & foo-content--> 
+  
+  <div id="test1-content"><!--DIV which show/hide on click of header--> 
+  
+  	<!--This DIV is for inline styling like padding...--> 
+    <div class="accordion_child"> 
+    	<table  cellspacing = "10">
+		<tr  >
+			<td> <img src = "zach.jpg" height = "40px" width = "40px"> </td> 
+			<td> <b style = "font-size: 15px">Zach Tribbett  </b> <br> 
+			<span style = "font-size: 12px ">Status: <span > accepted </span> </span><br> <a id = "click2" onclick = "confirm('zach')"href = "#" style = "font-size: 10px  "> <div id = "conf_text2"> Confirm </div> </a> </td> 
+			<td style = "padding-left: 50px"><a href = "#"> 
+			<img id = "con" src = "x.jpg" height = "10px" width = "10px"  > </a></td> 
+		</tr>
+		
+		<tr  >
+			<td> <img src = "victor.jpg" height = "40px" width = "40px"> </td> 
+			<td> <b style = "font-size: 15px">Victor Jakubiuk  </b> <br> 
+			<span style = "font-size: 12px ">Status: <span > pending </span> </span><br> <a href = "messaging.html" style = "font-size: 10px  "> Send request </a> </td> 
+			<td style = "padding-left: 50px"><a href = "#"> 
+			<img src = "x.jpg" height = "10px" width = "10px"  > </a></td> 
+		</tr>
+		
+		</table>
+    </div> 
+
+  </div> 
+<!--End of each accordion item--> 
+
+ <div align="right"><a href = "#" onclick = "revealModal('modalPage')"><button type = "button">Edit Itinerary</button> </a></div>
+ </div>
+  
+
+</body>
+
+</html>

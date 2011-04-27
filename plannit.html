@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <title>Road Trippit</title>
+                <link rel="stylesheet" type="text/css" href="style/style.css" />
+                <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/sunny/jquery-ui.css" type="text/css" />
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+                <script type="text/javascript" src="scripts/jquery.corner.js"></script>
+                <script type="text/javascript" src="scripts/defaultValue.js"></script>
+                <script src="http://connect.facebook.net/en_US/all.js"></script>
+                
+                
+                <script>
+                        FB.init({ 
+                           appId:'116006168479453', cookie:true, 
+                           status:true, xfbml:true 
+                        });
+                </script>
+                
+                <script>
+                        $(document).ready(function()
+                        {
+                                $("#tripName").setDefaultValue();
+                                $("#from").setDefaultValue();
+                                $("#to").setDefaultValue();
+                                $("#depart").setDefaultValue();
+                                $("#return").setDefaultValue();
+                                $('#depart').datepicker();
+                                $('#return').datepicker();
+                                $('#plannitBox').corner("30px");
+                                $('#dashboard').corner("30px");
+                                $('#logout').corner("30px");
+                                $("#submit").button();
+                                $("#logoutLink").button();
+                                $("#dashLink").button();
+                                
+                        });
+                </script>
+                
+        </head>
+                    
+            <body class="body">
+                <div id="plannit">
+                <div id="logout">
+                        <button type="button" id="logoutLink"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/index.html" onclick="<script>FB.logout(function(response) {window.location = 'http://web.mit.edu/tribbett/www/RoadTrippit/index.html';});</script>">Logout</a></button>
+                </div>
+                
+                <div id="dashboard">
+                        <button type="button" id="dashLink"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/dash.html">Dashboard</a></button>
+                </div>
+                
+                <div>
+                        <h1 class="title" style="font-size:80px">Plannit</h1>
+                </div>
+                <div id="fb-root"></div>
+                
+                <div id="plannitBox">
+                        
+                        <form action="#" method="post" id="plannitForm">
+                        <p>
+                        <label class="plannit">Trip Name</label>
+                        <input type="text" name="tripName" id="tripName" title="Name Me" />
+                        </p>
+                        
+                        <table>
+                        <tr>
+                        <td><label class="plannit">From</label></td>
+                        <td><input type="text" name="from" id="from" title="Starting Location" /></td>
+                        
+                        <td><label class="plannit">To</label></td>
+                        <td><input type="text" name="to" id="to" title="Ending Location" /></td>
+                        </tr>
+                        
+                        <tr><td><br /></td></tr>
+                        
+                        <tr>
+                        <td><label class="plannit">Depart</label></td>
+                        <td><input type="text" name="depart" id="depart" title="Departing Date" /></td>
+
+                        <td><label class="plannit">Return</label></td>
+                        <td><input type="text" name="return" id="return" title="Returning Date" /></td>
+                        </tr>
+                        </table>
+                        <br />
+                        <hr />
+                        <br />
+                        <hr style="color:yellow; border-bottom-style:dashed;" />
+                        <br />
+                        <hr />
+                        <br />
+                        <div id=submitDiv>
+        <!--MAKE SURE TO EDIT THIS FOR PROTOTYPE TO A LINK!!!! -->
+                        <button type="button" id="submit"><a href="map/map.html">TRIPPIT</a></button>
+                        </div>
+                        </form>
+                </div>
+                </div>  
+        </body>
+    </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <title>Road Trippit</title>
+                <link rel="stylesheet" type="text/css" href="style/style.css" />
+                <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/sunny/jquery-ui.css" type="text/css" />
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+                <script type="text/javascript" src="scripts/jquery.corner.js"></script>
+                <script type="text/javascript" src="scripts/defaultValue.js"></script>
+                <script type="text/javascript" src="scripts/jquery.watermark.js"></script>
+                <script src="http://connect.facebook.net/en_US/all.js"></script>
+                <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+                <script>
+                        FB.logout(function(response) {
+                                window.location = "http://web.mit.edu/tribbett/www/RoadTrippit/index.html";
+                        });
+                </script>
+                
+                <script>
+                        $(document).ready(function()
+                        {
+                                $('#dashBox').corner("30px");
+                                $('#dashboard').corner("30px");
+                                $('#logout').corner("30px");
+                                $('#view').button();
+                                $('#makeTrip').button();
+                                $("#logoutLink").button();
+                                $("#dashLink").button();
+                                
+                                //Accordian Operations
+                                $("#accordian").accordion({autoheight:false, fillSpace:true, clearStyle:false, active:false, collapsible:true})
+                            
+                        });
+                </script>
+                
+        </head>
+                    
+        <body class="body">
+            <div id="dash">
+                    
+                <div id="logout">
+                        <button type="button" id="logoutLink"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/index.html" onclick="FB.logout">Logout</a></button>
+                </div>
+                
+                <div id="dashboard">
+                        <button type="button" id="dashLink"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/dash.html">Dashboard</a></button>
+                </div>
+                
+                <div>
+                        <h1 class="title" style="font-size:60px">Dashboard</h1>
+                        <h3 id="welcomeBack">Welcome, Cameron</h3>
+                </div>
+                
+                <div id="dashBox">
+                    
+                    <div id="accordian" style="text-align:left">
+                                    
+                        <h3><a href="#">Cam's Trip to Senior House</a></h3>
+                        <div>
+                            <p>
+                                <table class="dashTrip">
+                                    <tr>
+                                        <td class="header">Depart:</td>
+                                        <td>Friday, 4/22/2011</td>
+                                        <td class="header">Return:</td>
+                                        <td>Friday, 4/29/2011</td>
+                                    </tr>
+                                    <tr style="margin-bottom:0px">
+                                        <td class="header">From:</td>
+                                        <td>410 Memorial Dr. Cambridge, MA</td>
+                                        <td class="header">To:</td>
+                                        <td>70 Amherst Street, Cambridge, MA</td>
+                                    </tr>
+                                </table>
+                                <div id="like"><fb:like href="" show_faces="false" width="30" font=""></fb:like>
+                                <button type="button" id="view"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/map/map.html">View Trip</a></button></div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="makeNewTrip"><button type="button" id="makeTrip"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/plannit.html"><h3>Plan a New Trip</h3></a></button></div>
+            </div>
+        </body>
+    </html>
