@@ -1,0 +1,24 @@
+Platform:
+This is a web service that relies on the target user (college student) having a Facebook account. This service runs on Safari Version 5.X and Chrome Version 10.X. 
+
+Starting the Prototype:
+To start the prototype, visit:  http://web.mit.edu/tribbett/www/RoadTrippit/
+
+You may download a .zip of all files in the prototype at: 
+
+"Shallow Aspects of Prototype"
+A page-by-page overview of what aspects are shallow and "canned." 
+
+Start Page: The "Login with Facebook" button is just a link - you don't actually login with Facebook (yet)…it links to a canned Dashboard
+
+Dashboard Page: The Dashboard Page is "canned" to be suited for a user named "Cameron" with his "Test Trip" already planned. From here you can view the trip already planned or plan a new trip. You may also "log out." You can also "Like" the trip which will share the Trip on Facebook (no backend functionality yet). 
+
+Plan Trip Page: Nothing here is canned. You may return to your dashboard or logout from here or type in information to plan your new trip and click "Trippit" to view your new trip (which is a canned trip - the same as the trip already planned"
+
+The Mappit Page: Here the trip is a "canned" trip. On the right hand side of the page, you can see available hosts for certain locations. You may also add new "intermediate" stops by clicking "Edit Itinerary" or message a friend by clicking on the messaging link for each friend.
+
+The Messaging Page: Here the canned responses are the content of the messages. You may click on different "hosts" and see the messaging thread.
+
+Direction Page: Here the directions are canned (because the trip is canned). You can click on the "legs" of the trip and the directions will change based on each leg of the trip. There is also a print button that will allow a user to print all directions. 
+Finally - the user can click the "finish" button and be returned back to the dashboard which will reflect their new trip (which is the original canned trip). 
+

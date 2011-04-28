@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <title>Directions</title>
+                <link rel="stylesheet" type="text/css" href="style/style.css" />
+                <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/sunny/jquery-ui.css" type="text/css" />
+                <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAMcCZfidjPDDpOxKsR8kQDRRO4KAP3Jdj-RIgScftUzhxFx9FFRRdndpOFLs0DnqeqqT5UNpC3xO8xg"
+					type="text/javascript"></script> 
+				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+                <script type="text/javascript" src="scripts/jquery.corner.js"></script>
+                <script type="text/javascript" src="scripts/defaultValue.js"></script>
+                <script type="text/javascript" src="scripts/jquery.watermark.js"></script>
+                <script src="http://connect.facebook.net/en_US/all.js"></script>
+                <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+                <script>
+                        FB.logout(function(response) {
+                                window.location = "http://web.mit.edu/tribbett/www/RoadTrippit/index.html";
+                        });
+                </script>
+                
+                <script>
+                        $(document).ready(function()
+                        {
+                              
+                                $('#dashboard').corner("30px");
+                                $('#logout').corner("30px");
+                                $("#logoutLink").button();
+								$("#toNextStop").button();
+                                $("#dashLink").button();
+								$('#directionsAccord').corner("30px");
+								$("#accordian").accordion({autoheight:false, fillSpace:true, clearStyle:false, active:false, collapsible:true})
+                                
+                                var b_canvas = document.getElementById("tab_orange");
+								var b_context = b_canvas.getContext("2d");
+								b_context.fillStyle = "rgba(220,220,220,.6)";
+	
+								b_context.fillRect(0, 0, 180, 600);
+	
+								b_context.fillStyle = "rgba(0,51,102,.9)";
+								b_context.fillRect(0, 152, 180, 40);
+								
+								
+								var map;
+								var directionsPanel;
+								var directions;
+ 
+    
+	
+								map = new GMap2(document.getElementById("map_canvas"));
+								map.setCenter(new GLatLng(42.351505,-71.094455), 15);
+								directionsPanel = document.getElementById("route");
+								directions = new GDirections(map, directionsPanel);
+								directions.load("from: 410 Memorial Drive, Cambridge, MA to: 70 Amherst Street, Cambridge, MA 02139 ");
+                            
+                        });
+                </script>
+                
+        </head>
+                    
+        <body class="body">
+		
+            <div id="dash">
+                <div   id='title_pic'  align = "center" style=" top: 0px ">
+					<img width = "100%" height = "60px" src = "images/blue.jpg" alt = "title"    />
+				</div>
+                <div id="logout">
+                        <button type="button" id="logoutLink"><a href="index.html" onclick="FB.logout">Logout</a></button>
+                </div>
+                
+                <div id="dashboard">
+                        <button type="button" id="dashLink"><a href="dash.html">Dashboard</a></button>
+                </div>
+                
+                <div>
+                        <span class="title" style="font-size:60px top: 0px position: fixed">Directions</span>
+                       
+                </div>
+                
+                
+                <div  id='tab_background'  >
+					<canvas id="tab_orange" height = "400px"  ></canvas>
+				</div>
+				
+				<div id = "tabs" >
+
+				<table cellspacing = "20" >
+				<tr>
+				<td > <img height = "25px" width = "25px" src = "images/map.jpg" alt = "map icon"  /> </td> <td align = "left">  <a href = "map.html" style = "color: black"> Map </a> </td>
+				</tr>
+				<tr>
+				<td> <img height = "25px" width = "25px" src = "images/chat.jpg" alt = "messaging icon"  /> </td> <td align = "left"><a href = "messaging.html" style = "color: black">Messaging</a> </td>
+				</tr>
+				<tr>
+				<td> <img height = "25px" width = "25px" src = "images/directions.jpg" alt = "directions icon"  /></td> <td align = "left"><a  style = "color: white"> Directions</a> </td>
+				</tr>
+				<tr>
+				<td> <img height = "25px" width = "25px" src = "images/check.jpg" alt = "finish icon"  /> </td> <td align = "left"><a href = "dash.html" style = "color: black">Finish</a> </td>
+				</tr>
+				</table>
+
+			</div>
+			<div id = "map_cont">
+			<div id="map_canvas" ></div> 
+			</div>
+			<div id="route" style="width: 25%; height:480px; right: 4%; top: 80px; border:1px solid black; position: absolute" ></div>
+			
+			<div id="directDiv" style="position: absolute; float:right; margin:25px; right:25px">
+				<button id = "toNextStop" type = "button">Directions for next leg </button>
+			</div>
+			<div id = "itinerary">  Itinerary</div>
+			<div id="directionsAccord">
+                   
+                    <div id="accordian" style="text-align:left">
+                                    
+                        <h3><a href="#">1. 410 Memorial Drive</a></h3>
+                        <div>
+                            <p>
+                                <table  cellspacing = "10" >
+								<tr  >
+									<td ><span class = "header"> Dates: </span> </td> <td>  4/10/2011 - 4/12/2011</td> 
+								</tr>
+								<tr >
+									<td><span class = "header"> Host: </td> <td> </span> Kayla Barrientos</td>
+								</tr>
+								<tr>
+									<td> <img src = "images/kayla.jpg" style = "border: 1px solid black">  </img> </td>
+								</tr>
+		
+								</table>
+                            </p>
+                        </div>
+						<h3><a href="#">2. 70 Amherst Street</a></h3>
+                        <div>
+                            <p>
+                                <table  cellspacing = "10" >
+								<tr  >
+									<td ><span class = "header"> Dates: </span> </td> <td>  4/12/2011 - 4/13/2011</td> 
+								</tr>
+								<tr >
+									<td><span class = "header"> Host: </td> <td> </span> Pending</td>
+								</tr>
+								
+		
+								</table>
+                            </p>
+                        </div>
+						
+                    </div>
+                </div>
+			
+			
+			
+            </div>
+        </body>
+    </html>
