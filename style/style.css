@@ -15,6 +15,23 @@
     background-size: cover;
 }
 
+#map_pic{
+font-family: Arial;
+font-size: 20px;
+position: absolute;
+top: 350px;
+left: 10%;
+}
+
+#group_pic{
+font-family: Arial;
+font-size: 20px;
+position: absolute;
+top: 150px;
+right: 10%;
+}
+
+
 #title {
 position: absolute;
 font-family: Fantasy;
