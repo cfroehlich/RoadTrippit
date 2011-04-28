@@ -43,8 +43,11 @@
                     
             <body class="body">
                 <div id="plannit">
+				<div   id='title_pic'  align = "center" style=" top: 0px ">
+					<img width = "100%" height = "60px" src = "images/blue.jpg" alt = "title"    />
+				</div>
                 <div id="logout">
-                        <button type="button" id="logoutLink"><a href="index.html" onclick="<script>FB.logout(function(response) {window.location = 'index.html';});</script>">Logout</a></button>
+                        <button type="button" id="logoutLink"><a href="index.html" onclick="<script>FB.logout(function(response) {window.location = 'http://web.mit.edu/tribbett/www/RoadTrippit/index.html';});</script>">Logout</a></button>
                 </div>
                 
                 <div id="dashboard">
@@ -52,7 +55,7 @@
                 </div>
                 
                 <div>
-                        <h1 class="title" style="font-size:80px">Plannit</h1>
+                        <h1 class="planTitle" >Plannit</h1>
                 </div>
                 <div id="fb-root"></div>
                 
@@ -92,7 +95,7 @@
                         <br />
                         <div id=submitDiv>
         <!--MAKE SURE TO EDIT THIS FOR PROTOTYPE TO A LINK!!!! -->
-                        <button type="button" id="submit"><a href="map/map.html">TRIPPIT</a></button>
+                        <button type="button" id="submit"><a href="map.html">TRIPPIT</a></button>
                         </div>
                         </form>
                 </div>

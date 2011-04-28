@@ -14,7 +14,7 @@
                 <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
                 <script>
                         FB.logout(function(response) {
-                                window.location = "index.html";
+                                window.location = "http://web.mit.edu/tribbett/www/RoadTrippit/index.html";
                         });
                 </script>
                 
@@ -38,8 +38,11 @@
         </head>
                     
         <body class="body">
+		
             <div id="dash">
-                    
+                <div   id='title_pic'  align = "center" style=" top: 0px ">
+					<img width = "100%" height = "60px" src = "images/blue.jpg" alt = "title"    />
+				</div>
                 <div id="logout">
                         <button type="button" id="logoutLink"><a href="index.html" onclick="FB.logout">Logout</a></button>
                 </div>
@@ -49,8 +52,8 @@
                 </div>
                 
                 <div>
-                        <h1 class="title" style="font-size:60px">Dashboard</h1>
-                        <h3 id="welcomeBack">Welcome, Cameron</h3>
+                        <span class="title" style="font-size:60px top: 0px position: fixed">Dashboard</span>
+                        <span id="welcomeBack">Welcome, Cameron</span>
                 </div>
                 
                 <div id="dashBox">
@@ -75,12 +78,12 @@
                                     </tr>
                                 </table>
                                 <div id="like"><fb:like href="" show_faces="false" width="30" font=""></fb:like>
-                                <button type="button" id="view"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/map/map.html">View Trip</a></button></div>
+                                <button type="button" id="view"><a href="map.html">View Trip</a></button></div>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div id="makeNewTrip"><button type="button" id="makeTrip"><a href="http://web.mit.edu/tribbett/www/RoadTrippit/plannit.html"><h3>Plan a New Trip</h3></a></button></div>
+                <div id="makeNewTrip"><button type="button" id="makeTrip"><a href="plannit.html"><h3>Plan a New Trip</h3></a></button></div>
             </div>
         </body>
     </html>
